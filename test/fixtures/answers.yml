@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  need_id: 1
+  memo: MyText
+  plan_on: 2013-04-29
+
+two:
+  need_id: 1
+  memo: MyText
+  plan_on: 2013-04-29

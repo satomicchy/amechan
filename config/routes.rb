@@ -1,4 +1,6 @@
 AmechanBox::Application.routes.draw do
+  resources :answers
+
   resources :needs
 
   resources :staffs
