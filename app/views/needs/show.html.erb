@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Staff:</strong>
+  <%= @need.staff_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @need.title %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @need.content %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @need.url %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @need.status %>
+</p>
+
+<p>
+  <strong>Importance:</strong>
+  <%= @need.importance %>
+</p>
+
+<p>
+  <strong>Finish on:</strong>
+  <%= @need.finish_on %>
+</p>
+
+<p>
+  <strong>Memo:</strong>
+  <%= @need.memo %>
+</p>
+
+
+<%= link_to 'Edit', edit_need_path(@need) %> |
+<%= link_to 'Back', needs_path %>

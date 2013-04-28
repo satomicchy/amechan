@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  staff_id: 1
+  title: MyString
+  content: MyText
+  url: MyString
+  status: MyString
+  importance: MyString
+  finish_on: 2013-04-29
+  memo: MyText
+
+two:
+  staff_id: 1
+  title: MyString
+  content: MyText
+  url: MyString
+  status: MyString
+  importance: MyString
+  finish_on: 2013-04-29
+  memo: MyText

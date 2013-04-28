@@ -1,0 +1,41 @@
+<h1>Listing needs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Staff</th>
+      <th>Title</th>
+      <th>Content</th>
+      <th>Url</th>
+      <th>Status</th>
+      <th>Importance</th>
+      <th>Finish on</th>
+      <th>Memo</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @needs.each do |need| %>
+    <tr>
+      <td><%= need.staff_id %></td>
+      <td><%= need.title %></td>
+      <td><%= need.content %></td>
+      <td><%= need.url %></td>
+      <td><%= need.status %></td>
+      <td><%= need.importance %></td>
+      <td><%= need.finish_on %></td>
+      <td><%= need.memo %></td>
+      <td><%= link_to 'Show', need %></td>
+      <td><%= link_to 'Edit', edit_need_path(need) %></td>
+      <td><%= link_to 'Destroy', need, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Need', new_need_path %>
