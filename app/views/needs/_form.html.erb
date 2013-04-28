@@ -11,39 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :staff_id %><br />
-    <%= f.number_field :staff_id %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br />
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :url %><br />
-    <%= f.text_field :url %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :importance %><br />
-    <%= f.text_field :importance %>
-  </div>
-  <div class="field">
-    <%= f.label :finish_on %><br />
-    <%= f.date_select :finish_on %>
-  </div>
-  <div class="field">
-    <%= f.label :memo %><br />
-    <%= f.text_area :memo %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="table">
+    <table>
+      <tr>
+        <th><%= f.label :staff_id %></th>
+        <td></td>
+      </tr>
+      <tr>
+        <th><%= f.label :title %></th>
+        <td><%= f.text_field :title, class: "span7" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :content %></th>
+        <td><%= f.text_area :content, class: "span7", size: "5x6" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :url %></th>
+        <td><%= f.text_field :url, class: "span7" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :status %></th>
+        <td><%= f.text_field :status %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :importance %></th>
+        <td><%= f.text_field :importance %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :finish_on %></th>
+        <td><%= f.date_select :finish_on, {}, class: "span2" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :memo %></th>
+        <td><%= f.text_area :memo, class: "span7", size: "5x6" %></td>
+      </tr>
+      <tr>
+        <th><%= f.submit %></th>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
   </div>
 <% end %>
