@@ -16,7 +16,7 @@
     <% @needs.each do |need| %>
     <tr>
       <td><%= need.created_at.strftime("%y%m%d") %></td>
-      <td><%= need.staff.name %></td>
+      <td><%= need.staff.try("name") %></td>
       <td><%= need.title %></td>
       <td><%= need.importance %></td>
       <td><%= need.status %></td>
