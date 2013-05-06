@@ -1,8 +1,9 @@
 <h2>要望一覧</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
+      <th>番号</th>
       <th>記入日</th>
       <th>スタッフ</th>
       <th>タイトル</th>
@@ -15,12 +16,13 @@
   <tbody>
     <% @needs.each do |need| %>
     <tr>
-      <td><%= need.created_at.strftime("%y%m%d") %></td>
+      <td><%= need.id %></td>
+      <td><%= need.created_at.strftime("%Y-%m-%d") %></td>
       <td><%= need.staff.try("name") %></td>
       <td><%= need.title %></td>
-      <td><%= need.importance %></td>
-      <td><%= need.status %></td>
-      <td><%= link_to '詳細', need %></td>
+      <td><% if need.importance.present? %><%= t(need.importance) %><% end %></td>
+      <td><% if need.status.present? %><%= t(need.status) %><% end %></td>
+      <td><%= link_to '詳細', need, class: "btn btn-small" %></td>
     </tr>
     <% end %>
   </tbody>
@@ -28,4 +30,4 @@
 
 <br />
 
-<%= link_to '新規登録', new_need_path %>
+<%= link_to '新規登録', new_need_path, class: "btn btn-small btn-info" %>
