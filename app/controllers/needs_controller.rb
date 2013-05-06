@@ -10,6 +10,7 @@ class NeedsController < ApplicationController
   # GET /needs/1
   # GET /needs/1.json
   def show
+    @answers = @need.answers
   end
 
   # GET /needs/new

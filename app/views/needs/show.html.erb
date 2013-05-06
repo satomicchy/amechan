@@ -1,45 +1,65 @@
-<p id="notice"><%= notice %></p>
+<h2>詳細&nbsp;&nbsp;<%= link_to '戻る', needs_path, class: "btn btn-small" %></h2>
 
-<p>
-  <strong>Staff:</strong>
-  <%= @need.staff_id %>
-</p>
+<div>
+  <%= link_to '編集', edit_need_path(@need), class: "btn btn-small btn-info" %>
+  <%= link_to '削除', @need, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-info" %>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @need.title %>
-</p>
+<div class="well well-small">
+  <table class="table table-condenced table-no-mergin">
+    <tr>
+      <th>番号</th>
+      <td><%= @need.id %></td>
+    </tr>
+    <tr>
+      <th>記入日</th>
+      <td><%= @need.created_at.strftime("%Y-%m-%d") %></td>
+    </tr>
+    <tr>
+      <th>スタッフ</th>
+      <td><%= @need.staff_id %></td>
+    </tr>
+    <tr>
+      <th>タイトル</th>
+      <td><%= @need.title %></td>
+    </tr>
+    <tr>
+      <th>内容</th>
+      <td><%= @need.content %></td>
+    </tr>
+    <tr>
+      <th>URL</th>
+      <td><%= @need.url %></td>
+    </tr>
+    <tr>
+      <th>重要度</th>
+      <td><% if @need.importance.present? %><%= t(@need.importance) %><% end %></td>
+    </tr>
+    <tr>
+      <th>状態</th>
+      <td><% if @need.status.present? %><%= t(@need.status) %><% end %></td>
+    </tr>
+  </table>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <%= @need.content %>
-</p>
+<div>
+  <blockquote>対応</blockquote>
 
-<p>
-  <strong>Url:</strong>
-  <%= @need.url %>
-</p>
+  <div class="well well-small">
+    <b>解決日</b>&nbsp;
+    <%= @need.finish_on %>
+    <br />
+    <b>補足</b>&nbsp;&nbsp;&nbsp;
+    <%= @need.memo %>
+  </div>
 
-<p>
-  <strong>Status:</strong>
-  <%= @need.status %>
-</p>
+  <table>
+    <% @answers.each do |answer| %>
+      予定日<%= answer.plan_on.strftime("%Y-%m-%d") %>&nbsp;<%= link_to '編集', edit_need_answer_path(@need, answer), class: "btn btn-info btn-small" %>
+      <br />
+      メモ<%= answer.memo %>
+    <% end %>
+  </table>
 
-<p>
-  <strong>Importance:</strong>
-  <%= @need.importance %>
-</p>
-
-<p>
-  <strong>Finish on:</strong>
-  <%= @need.finish_on %>
-</p>
-
-<p>
-  <strong>Memo:</strong>
-  <%= @need.memo %>
-</p>
-
-
-<%= link_to 'Edit', edit_need_path(@need) %> |
-<%= link_to 'Back', needs_path %>
+  <%= link_to '回答追加', new_need_answer_path(@need), class: "btn btn-info btn-small" %>
+</div>
