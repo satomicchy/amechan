@@ -31,11 +31,11 @@
       </tr>
       <tr>
         <th><%= f.label :status %></th>
-        <td><%= f.text_field :status %></td>
+        <td><%= f.select :status, Need::STATE.map{|s| [t(s), s]}, {}, {class: "span2"} %></td>
       </tr>
       <tr>
         <th><%= f.label :importance %></th>
-        <td><%= f.text_field :importance %></td>
+        <td><%= f.select :importance, Need::IMPORTANCE.map{|i| [t(i), i]}, {}, {class: "span2"} %></td>
       </tr>
       <tr>
         <th><%= f.label :finish_on %></th>

@@ -195,3 +195,13 @@ ja:
   activerecord:
     errors:
       <<: *errors
+
+  high_level:   高い
+  middle_level: 普通
+  low_level:    低い
+
+  waiting:      対応待ち
+  on_handling:  対応中
+  on_hold:      保留中
+  resolved:     解決済
+  rejection:    却下
