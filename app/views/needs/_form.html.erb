@@ -38,14 +38,6 @@
         <td><%= f.select :importance, Need::IMPORTANCE.map{|i| [t(i), i]}, {}, {class: "span2"} %></td>
       </tr>
       <tr>
-        <th><%= f.label :finish_on %></th>
-        <td><%= f.date_select :finish_on, {}, class: "span2" %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :memo %></th>
-        <td><%= f.text_area :memo, class: "span7", size: "5x6" %></td>
-      </tr>
-      <tr>
         <th><%= f.submit %></th>
         <td>&nbsp;</td>
       </tr>
