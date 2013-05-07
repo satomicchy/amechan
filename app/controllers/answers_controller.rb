@@ -24,11 +24,12 @@ class AnswersController < ApplicationController
   # POST /answers
   # POST /answers.json
   def create
-    @answer = Answer.new(answer_params)
+    @need   = Need.find(params[:need_id])
+    @answer = @need.answers.new(answer_params)
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+        format.html { redirect_to need_path(@need) }
         format.json { render action: 'show', status: :created, location: @answer }
       else
         format.html { render action: 'new' }
