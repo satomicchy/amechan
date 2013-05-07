@@ -56,13 +56,16 @@
   <blockquote>対応</blockquote>
 
   <% @answers.each do |answer| %>
-    <div class="well well-small">
-      予定日<%= answer.plan_on.strftime("%Y-%m-%d") %>&nbsp;<%= link_to '編集', edit_need_answer_path(@need, answer), class: "btn btn-info btn-small" %>
+    <div>
+      <b>予定</b>&nbsp;<%= answer.plan_on.strftime("%Y-%m-%d") %>&nbsp;
+      <%= link_to '編集', edit_need_answer_path(@need, answer), class: "btn btn-info btn-mini" %>
       <br />
-      メモ<%= answer.memo %>
+      <b>メモ</b>&nbsp;<%= answer.memo %>
     </div>
   <% end %>
 </div>
+
+<br />
 
 <div>
   <%= form_for([@need, @answer]) do |f| %>
@@ -79,12 +82,12 @@
 
     <table>
       <tr>
-        <th><%= f.label :memo %></th>
-        <td><%= f.text_area :memo, class: "span7", size: "5x6" %></td>
-      </tr>
-      <tr>
         <th><%= f.label :plan_on %></th>
         <td><%= f.date_select :plan_on, {}, class: "span2" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :memo %></th>
+        <td><%= f.text_area :memo, class: "span7", size: "5x6" %></td>
       </tr>
       <tr>
         <th><%= f.submit %></th>
