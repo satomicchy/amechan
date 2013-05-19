@@ -58,7 +58,7 @@
   <% @answers.each do |answer| %>
     <div>
       <b>予定</b>&nbsp;<%= answer.plan_on.strftime("%Y-%m-%d") %>&nbsp;
-      <%= link_to '編集', edit_need_answer_path(@need, answer), class: "btn btn-info btn-mini" %>
+      <%= link_to '編集', 'javascript:void(0)', class: 'answer_edit btn btn-info btn-mini', id: "answer_#{answer.id}" %>
       <br />
       <b>メモ</b>&nbsp;<%= answer.memo %>
     </div>
@@ -83,7 +83,7 @@
     <table>
       <tr>
         <th><%= f.label :plan_on %></th>
-        <td><%= f.date_select :plan_on, {}, class: "span2" %></td>
+        <td><%= f.text_field :plan_on, class: "pick_date span2" %></td>
       </tr>
       <tr>
         <th><%= f.label :memo %></th>
