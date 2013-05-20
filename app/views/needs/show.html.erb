@@ -17,7 +17,7 @@
     </tr>
     <tr>
       <th>スタッフ</th>
-      <td><%= @need.staff_id %></td>
+      <td><%= @need.staff.try("name") %></td>
     </tr>
     <tr>
       <th>タイトル</th>
