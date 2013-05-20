@@ -25,6 +25,9 @@
             <span class="icon-bar"></span>
           </a>
           <%= link_to 'Amechan Box', root_path, class: "brand" %>
+          <div class="pull-right">
+            <%= link_to 'Logout', destroy_staff_session_path, method: :delete, class: "btn" %>
+          </div>
         </div>
       </div>
     </div>
