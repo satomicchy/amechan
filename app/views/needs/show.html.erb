@@ -59,6 +59,7 @@
     <div>
       <b>予定</b>&nbsp;<%= answer.plan_on.strftime("%Y-%m-%d") %>&nbsp;
       <%= link_to '編集', 'javascript:void(0)', class: 'answer_edit btn btn-info btn-mini', id: "answer_#{answer.id}" %>
+      <%= link_to '削除', need_answer_path(@need, answer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-info" %>
       <br />
       <b>メモ</b>&nbsp;<%= answer.memo %>
     </div>
