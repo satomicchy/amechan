@@ -1,4 +1,5 @@
 AmechanBox::Application.routes.draw do
+  devise_for :staffs
   resources :needs do
     resources :answers
   end
