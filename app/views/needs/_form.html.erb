@@ -35,12 +35,14 @@
       </tr>
       <tr>
         <th><%= f.label :finish_on %></th>
-        <td><%= f.date_select :finish_on, {}, class: "span2" %></td>
+        <td><%= f.text_field :finish_on, class: "pick_date span2" %></td>
       </tr>
+      <% if current_staff.id == 1 %>
       <tr>
         <th><%= f.label :memo %></th>
         <td><%= f.text_area :memo, class: "span7", size: "5x6" %></td>
       </tr>
+      <% end %>
       <tr>
         <th><%= f.submit %></th>
         <td>&nbsp;</td>
