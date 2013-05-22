@@ -2,7 +2,11 @@ AmechanBox::Application.routes.draw do
   devise_for :staffs
   resources :needs do
     resources :answers
-    get 'waiting', to: :waiting, on: :collection, as: 'waiting'
+    get 'waiting'    , to: :waitings    , on: :collection, as: 'waiting'
+    get 'on_handling', to: :on_handlings, on: :collection, as: 'on_handling'
+    get 'on_hold'    , to: :on_holds    , on: :collection, as: 'on_hold'
+    get 'resolved'   , to: :resolveds   , on: :collection, as: 'resolved'
+    get 'rejection'  , to: :rejections  , on: :collection, as: 'rejection'
   end
 
   resources :staffs
