@@ -44,6 +44,10 @@
                 <h3>いろいろ一覧</h3>
                 <ul class="nav nav-list">
                   <li><%= link_to "対応待ち", waiting_needs_path %></li>
+                  <li><%= link_to "対応中"  , on_handling_needs_path %></li>
+                  <li><%= link_to "保留中"  , on_hold_needs_path %></li>
+                  <li><%= link_to "解決済"  , resolved_needs_path %></li>
+                  <li><%= link_to "却下"    , rejection_needs_path %></li>
                 </ul>
               </div><!--/.well -->
             <% end %>

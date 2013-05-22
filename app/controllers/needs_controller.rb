@@ -8,6 +8,30 @@ class NeedsController < ApplicationController
     render "index"
   end
 
+  def on_handlings
+    @title = "要望一覧（対応中）"
+    @needs = Need.where(status: "on_handling")
+    render "index"
+  end
+
+  def on_holds
+    @title = "要望一覧（保留中）"
+    @needs = Need.where(status: "on_hold")
+    render "index"
+  end
+
+  def resolveds
+    @title = "要望一覧（解決済）"
+    @needs = Need.where(status: "resolved")
+    render "index"
+  end
+
+  def rejections
+    @title = "要望一覧（却下）"
+    @needs = Need.where(status: "rejection")
+    render "index"
+  end
+
   # GET /needs
   # GET /needs.json
   def index
