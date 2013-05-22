@@ -1,9 +1,17 @@
+# -*- coding: utf-8 -*-
 class NeedsController < ApplicationController
   before_action :set_need, only: [:show, :edit, :update, :destroy]
+
+  def waitings
+    @title = "要望一覧（対応待ち）"
+    @needs = Need.where(status: "waiting")
+    render "index"
+  end
 
   # GET /needs
   # GET /needs.json
   def index
+    @title = "要望一覧"
     @needs = Need.all
   end
 
