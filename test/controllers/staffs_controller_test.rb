@@ -18,7 +18,7 @@ class StaffsControllerTest < ActionController::TestCase
 
   test "should create staff" do
     assert_difference('Staff.count') do
-      post :create, staff: { name: @staff.name }
+      post :create, staff: { name: "test_name", email: "test_name@example.com", password: "password", password_confirmation: "password" }
     end
 
     assert_redirected_to staff_path(assigns(:staff))
