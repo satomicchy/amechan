@@ -1,6 +1,8 @@
 <h2><%= @title %></h2>
 
-<table class="table">
+<%= link_to '新規登録', new_need_path, class: "btn btn-small btn-info" %>
+
+<table class="table table-condensed">
   <thead>
     <tr>
       <th>番号</th>
@@ -27,5 +29,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to '新規登録', new_need_path, class: "btn btn-small btn-info" %>

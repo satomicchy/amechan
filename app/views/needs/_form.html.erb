@@ -25,10 +25,12 @@
         <th><%= f.label :url %></th>
         <td><%= f.text_field :url, class: "span7" %></td>
       </tr>
+      <% if current_staff.id == 1 %>
       <tr>
         <th><%= f.label :status %></th>
         <td><%= f.select :status, Need::STATE.map{|s| [t(s), s]}, {}, {class: "span2"} %></td>
       </tr>
+      <% end %>
       <tr>
         <th><%= f.label :importance %></th>
         <td><%= f.select :importance, Need::IMPORTANCE.map{|i| [t(i), i]}, {}, {class: "span2"} %></td>

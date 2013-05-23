@@ -60,6 +60,7 @@ class NeedsController < ApplicationController
   def create
     @need = Need.new(need_params)
     @need.staff_id = current_staff.id
+    @need.status   = "waiting"
 
     respond_to do |format|
       if @need.save
