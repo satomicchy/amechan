@@ -1,4 +1,5 @@
 class StaffsController < ApplicationController
+  before_action :only_admin
   before_action :set_staff, only: [:show, :edit, :update, :destroy]
 
   # GET /staffs
@@ -70,5 +71,11 @@ class StaffsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
       params.require(:staff).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def only_admin
+      if current_staff.id != 1
+        redirect_to root_path
+      end
     end
 end
