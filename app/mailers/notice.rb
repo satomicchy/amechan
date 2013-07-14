@@ -1,14 +1,11 @@
+# -*- coding: utf-8 -*-
 class Notice < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "amechan_box_no_reply@example.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.notice.update.subject
-  #
   def update
-    @greeting = "Hi"
+    time_now = Time.now
+    @needs = Need.where(updated_at: (time_now - 1.day)..time_now)
 
-    mail to: "to@example.org"
+    mail to: Staff.where(id: 1).pluck(:email), subject: "Amechan box更新のお知らせ。"
   end
 end

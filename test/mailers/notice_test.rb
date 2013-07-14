@@ -1,12 +1,11 @@
+# -*- coding: utf-8 -*-
 require 'test_helper'
 
 class NoticeTest < ActionMailer::TestCase
   test "update" do
     mail = Notice.update
-    assert_equal "Update", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+    assert_equal "Amechan box更新のお知らせ。", mail.subject
+    assert_equal ["admin@example.com"], mail.to
+    assert_equal ["amechan_box_no_reply@example.com"], mail.from
   end
-
 end
