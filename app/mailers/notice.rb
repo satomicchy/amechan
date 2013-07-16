@@ -6,6 +6,6 @@ class Notice < ActionMailer::Base
     time_now = Time.now
     @needs = Need.where(updated_at: (time_now - 1.day)..time_now)
 
-    mail to: Staff.where(id: 1).pluck(:email), subject: "Amechan box更新のお知らせ。"
+    mail to: Staff.pluck(:email), subject: "Amechan box更新のお知らせ。"
   end
 end
