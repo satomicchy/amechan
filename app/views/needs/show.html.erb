@@ -25,7 +25,7 @@
     </tr>
     <tr>
       <th>内容</th>
-      <td><%= @need.content %></td>
+      <td><%= simple_format @need.content %></td>
     </tr>
     <tr>
       <th>URL</th>
@@ -47,7 +47,7 @@
   <%= @need.finish_on %>
   <br />
   <b>補足</b>&nbsp;&nbsp;&nbsp;
-  <%= @need.memo %>
+  <%= simple_format @need.memo %>
 </div>
 
 <br />
@@ -57,13 +57,13 @@
 
   <% @answers.each do |answer| %>
     <div>
-      <b>予定</b>&nbsp;<%= answer.plan_on.strftime("%Y-%m-%d") %>&nbsp;
+      <b>予定</b>&nbsp;<%= answer.plan_on.try(:strftime, "%Y-%m-%d") %>&nbsp;
       <% if current_staff.id == 1 %>
         <%= link_to '編集', 'javascript:void(0)', class: 'answer_edit btn btn-info btn-mini', id: "answer_#{answer.id}" %>
         <%= link_to '削除', need_answer_path(@need, answer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-info" %>
       <% end %>
       <br />
-      <b>メモ</b>&nbsp;<%= answer.memo %>
+      <b>メモ</b>&nbsp;<%= simple_format answer.memo %>
     </div>
   <% end %>
 </div>
