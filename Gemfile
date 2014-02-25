@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc1'
+gem 'rails', '4.0.2'
 
 group :development do
   gem 'sqlite3'
@@ -29,7 +29,7 @@ gem 'jquery-rails'
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
 gem 'therubyracer'
-gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'devise'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
