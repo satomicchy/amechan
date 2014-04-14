@@ -2,5 +2,9 @@
 以下のページで更新がありました。
 
 <% @needs.each do |need| %>
+  【<%= need.status %>】
+  <%= need.title %>
+  <%= need.content %>
   <%= polymorphic_url need, protocol: 'https' %>
+  <br />
 <% end %>
