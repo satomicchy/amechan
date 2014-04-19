@@ -1,9 +1,9 @@
 AmechanBox::Application.routes.draw do
-  resources :comments
 
   devise_for :staffs
   resources :needs do
     resources :answers
+    resources :comments
     get 'waiting'    , to: :waitings    , on: :collection, as: 'waiting'
     get 'on_handling', to: :on_handlings, on: :collection, as: 'on_handling'
     get 'on_hold'    , to: :on_holds    , on: :collection, as: 'on_hold'
