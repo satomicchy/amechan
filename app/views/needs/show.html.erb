@@ -46,38 +46,35 @@
   <b>解決日</b>&nbsp;
   <%= @need.finish_on %>
   <br />
-  <b>補足</b>&nbsp;&nbsp;&nbsp;
+  <b>メッセージ</b>&nbsp;&nbsp;&nbsp;
   <%= simple_format @need.memo %>
 </div>
 
 <br />
 
 <div>
-  <blockquote>対応</blockquote>
+  <blockquote>コメント</blockquote>
 
-  <% @answers.each do |answer| %>
+  <% @comments.each do |comment| %>
     <div>
-      <b>予定</b>&nbsp;<%= answer.plan_on.try(:strftime, "%Y-%m-%d") %>&nbsp;
-      <% if current_staff.id == 1 %>
-        <%= link_to '編集', 'javascript:void(0)', class: 'answer_edit btn btn-info btn-mini', id: "answer_#{answer.id}" %>
-        <%= link_to '削除', need_answer_path(@need, answer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-info" %>
-      <% end %>
+      <b>コメント日</b>&nbsp;<%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>&nbsp;
+      <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-info btn-mini', id: "comment_#{comment.id}" %>
+      <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-info" %>
       <br />
-      <b>メモ</b>&nbsp;<%= simple_format answer.memo %>
+      <b>コメント</b>&nbsp;<%= simple_format comment.memo %>
     </div>
   <% end %>
 </div>
 
 <br />
 
-<% if current_staff.id == 1 %>
 <div>
-  <%= form_for([@need, @answer]) do |f| %>
-    <% if @answer.errors.any? %>
+  <%= form_for([@need, @comment]) do |f| %>
+    <% if @comment.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+        <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
         <ul>
-          <% @answer.errors.full_messages.each do |msg| %>
+          <% @comment.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
           <% end %>
         </ul>
@@ -86,18 +83,11 @@
 
     <table>
       <tr>
-        <th><%= f.label :plan_on %></th>
-        <td><%= f.text_field :plan_on, class: "pick_date span2" %></td>
-      </tr>
-      <tr>
-        <th><%= f.label :memo %></th>
         <td><%= f.text_area :memo, class: "span7", size: "5x6" %></td>
       </tr>
       <tr>
-        <th><%= f.submit %></th>
-        <td>&nbsp;</td>
+        <td><%= f.submit "コメントする" %></td>
       </tr>
     </table>
   <% end %>
 </div>
-<% end %>

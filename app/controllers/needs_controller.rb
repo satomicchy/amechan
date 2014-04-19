@@ -42,8 +42,8 @@ class NeedsController < ApplicationController
   # GET /needs/1
   # GET /needs/1.json
   def show
-    @answer  = Answer.new
-    @answers = @need.answers
+    @comment  = Comment.new
+    @comments = @need.comments
   end
 
   # GET /needs/new
