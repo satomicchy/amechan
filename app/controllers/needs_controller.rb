@@ -4,31 +4,31 @@ class NeedsController < ApplicationController
 
   def waitings
     @title = "要望一覧（対応待ち）"
-    @needs = Need.where(status: "waiting").order("id DESC").all
+    @needs = Need.where(status: "waiting").order("id DESC")
     render "index"
   end
 
   def on_handlings
     @title = "要望一覧（対応中）"
-    @needs = Need.where(status: "on_handling").order("id DESC").all
+    @needs = Need.where(status: "on_handling").order("id DESC")
     render "index"
   end
 
   def on_holds
     @title = "要望一覧（保留中）"
-    @needs = Need.where(status: "on_hold").order("id DESC").all
+    @needs = Need.where(status: "on_hold").order("id DESC")
     render "index"
   end
 
   def resolveds
     @title = "要望一覧（解決済）"
-    @needs = Need.where(status: "resolved").order("id DESC").all
+    @needs = Need.where(status: "resolved").order("id DESC")
     render "index"
   end
 
   def rejections
     @title = "要望一覧（却下）"
-    @needs = Need.where(status: "rejection").order("id DESC").all
+    @needs = Need.where(status: "rejection").order("id DESC")
     render "index"
   end
 
@@ -36,7 +36,7 @@ class NeedsController < ApplicationController
   # GET /needs.json
   def index
     @title = "要望一覧"
-    @needs = Need.order("id DESC").all
+    @needs = Need.order("id DESC")
   end
 
   # GET /needs/1
