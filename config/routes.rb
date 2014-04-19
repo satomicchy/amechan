@@ -1,4 +1,6 @@
 AmechanBox::Application.routes.draw do
+  resources :comments
+
   devise_for :staffs
   resources :needs do
     resources :answers
