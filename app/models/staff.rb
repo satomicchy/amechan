@@ -4,4 +4,5 @@ class Staff < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   has_many :needs
+  has_many :comments
 end
