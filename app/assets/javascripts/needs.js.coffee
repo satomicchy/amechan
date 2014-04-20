@@ -8,6 +8,7 @@ jQuery ($) ->
     id = @id.split('_')[1]
     form = @form
     $.get("/needs/(＾０＾)/comments/#{id}.json").success (response) ->
+      $("#comment_area_#{id}").hide()
       $("#comment_#{k}").val(v) for k, v of response
       original_action = $("#new_comment").attr("action")
       $("#new_comment").attr(action: "/needs/(＾０＾)/comments/#{id}")

@@ -56,7 +56,7 @@
   <blockquote>コメント</blockquote>
 
   <% @comments.each do |comment| %>
-    <div>
+    <div id="comment_area_<%= comment.id %>">
       <%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>：<%= comment.staff.name %>&nbsp;さんより
       <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-warning btn-mini', id: "comment_#{comment.id}" %>
       <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
@@ -85,7 +85,7 @@
         <td><%= f.text_area :memo, class: "span7", size: "5x6" %></td>
       </tr>
       <tr>
-        <td><%= f.submit "コメントする" %></td>
+        <td><%= f.submit "コメントする" %>&nbsp;&nbsp;&nbsp;<%= link_to 'キャンセル', need_path(@need) %></td>
       </tr>
     </table>
   <% end %>

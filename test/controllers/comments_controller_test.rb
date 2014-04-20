@@ -35,10 +35,11 @@ class CommentsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should update comment" do
-  #   patch :update, id: @comment, comment: { memo: @comment.memo, need_id: @comment.need_id, staff_id: @comment.staff_id }
-  #   assert_redirected_to comment_path(assigns(:comment))
-  # end
+  test "should update comment" do
+    patch :update, need_id: @need.id, id: @comment, comment: { memo: @comment.memo, need_id: @comment.need_id, staff_id: @comment.staff_id }
+
+    assert_redirected_to need_path(@comment.need_id)
+  end
 
   # test "should destroy comment" do
   #   assert_difference('Comment.count', -1) do

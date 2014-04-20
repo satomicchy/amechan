@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to need_path(@comment.need_id) }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
