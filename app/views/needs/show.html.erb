@@ -1,8 +1,8 @@
 <h2>詳細&nbsp;&nbsp;<%= link_to '戻る', needs_path, class: "btn btn-small" %></h2>
 
 <div>
-  <%= link_to '編集', edit_need_path(@need), class: "btn btn-small btn-info" %>
-  <%= link_to '削除', @need, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-info" %>
+  <%= link_to '編集', edit_need_path(@need), class: "btn btn-small btn-warning" %>
+  <%= link_to '削除', @need, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-danger" %>
 </div>
 
 <div class="well well-small">
@@ -57,16 +57,15 @@
 
   <% @comments.each do |comment| %>
     <div>
-      <b>コメント日</b>&nbsp;<%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>&nbsp;
-      <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-info btn-mini', id: "comment_#{comment.id}" %>
-      <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-info" %>
+      <%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>：<%= comment.staff.name %>&nbsp;さんより
+      <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-warning btn-mini', id: "comment_#{comment.id}" %>
+      <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
       <br />
-      <b>コメント</b>&nbsp;<%= simple_format comment.memo %>
+      <%= simple_format comment.memo %>
     </div>
+    <hr>
   <% end %>
 </div>
-
-<br />
 
 <div>
   <%= form_for([@need, @comment]) do |f| %>

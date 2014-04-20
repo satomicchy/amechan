@@ -2,6 +2,7 @@ require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
   setup do
+    @need    = needs(:one)
     @comment = comments(:one)
   end
 
@@ -16,13 +17,13 @@ class CommentsControllerTest < ActionController::TestCase
   #   assert_response :success
   # end
 
-  # test "should create comment" do
-  #   assert_difference('Comment.count') do
-  #     post :create, comment: { memo: @comment.memo, need_id: @comment.need_id, staff_id: @comment.staff_id }
-  #   end
+  test "should create comment" do
+    assert_difference('Comment.count') do
+      post :create, need_id: @need.id, comment: { memo: @comment.memo, need_id: @comment.need_id, staff_id: @comment.staff_id }
+    end
 
-  #   assert_redirected_to comment_path(assigns(:comment))
-  # end
+    assert_redirected_to need_path(@need)
+  end
 
   # test "should show comment" do
   #   get :show, id: @comment
