@@ -1,12 +1,14 @@
 <h2>詳細&nbsp;&nbsp;<%= link_to '戻る', needs_path, class: "btn btn-small" %></h2>
 
-<div>
-  <%= link_to '編集', edit_need_path(@need), class: "btn btn-small btn-warning" %>
-  <%= link_to '削除', @need, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-danger" %>
-</div>
+<% if active_staff(@need.staff_id) %>
+  <div>
+    <%= link_to '編集', edit_need_path(@need), class: "btn btn-small btn-warning" %>
+    <%= link_to '削除', @need, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-danger" %>
+  </div>
+<% end %>
 
 <div class="well well-small">
-  <table class="table table-condenced table-no-mergin">
+  <table class="table table-condenced table-no-mergin" id="need_table">
     <tr>
       <th>番号</th>
       <td><%= @need.id %></td>
@@ -42,13 +44,14 @@
   </table>
 </div>
 
-<div>
-  <b>解決日</b>&nbsp;
-  <%= @need.finish_on %>
-  <br />
-  <b>メッセージ</b>&nbsp;&nbsp;&nbsp;
-  <%= simple_format @need.memo %>
-</div>
+<% if @need.finish_on %>
+  <div>
+    <b>解決日</b>&nbsp;
+    <%= @need.finish_on %>
+    <br />
+    <p><%= simple_format @need.memo %></p>
+  </div>
+<% end %>
 
 <br />
 
@@ -58,10 +61,12 @@
   <% @comments.each do |comment| %>
     <div id="comment_area_<%= comment.id %>">
       <%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>：<%= comment.staff.name %>&nbsp;さんより
-      <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-warning btn-mini', id: "comment_#{comment.id}" %>
-      <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
+      <% if active_staff(comment.staff_id) %>
+        <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-warning btn-mini', id: "comment_#{comment.id}" %>
+        <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
+      <% end %>
       <br />
-      <%= simple_format comment.memo %>
+      <p><%= simple_format comment.memo %></p>
     </div>
     <hr>
   <% end %>
