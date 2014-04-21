@@ -1,10 +1,20 @@
 
 以下のページで更新がありました。
 
-<% @needs.each do |need| %>
-  【<%= need.status %>】
-  <%= need.title %>
-  <%= need.content %>
-  <%= polymorphic_url need, protocol: 'https' %>
-  <br />
+<% if @needs.present? %>
+  <% @needs.each do |need| %>
+    【<%= t(need.status) %>】<%= need.title %><br />
+    <%= need.content %><br />
+    <%= polymorphic_url need, protocol: 'https' %>
+    <br />
+  <% end %>
+<% end %>
+
+<% if @comments.present? %>
+  <% @comments.each do |comment| %>
+    【<%= t(comment.need.status) %>】<%= comment.need.title %><br />
+    <%= comment.memo %><br />
+    <%= polymorphic_url comment.need, protocol: 'https' %>
+    <br />
+  <% end %>
 <% end %>

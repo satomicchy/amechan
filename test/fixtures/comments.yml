@@ -2,10 +2,10 @@
 
 one:
   memo: MyText
-  need_id: 1
+  need: one
   staff_id: 1
 
 two:
   memo: MyText
-  need_id: 1
+  need: two
   staff_id: 1
