@@ -205,3 +205,11 @@ ja:
   on_hold:      保留中
   resolved:     解決済
   rejection:    却下
+
+  devise:
+    sessions:
+      signed_in: "お疲れさまです。ログインできました。"
+      signed_out: "お疲れさまでした。ログアウトできました。"
+    failure:
+      invalid: "メールアドレスとパスワードを正しく入力してください。"
+      unauthenticated: "メールアドレスとパスワードを正しく入力してください。"

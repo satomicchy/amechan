@@ -16,50 +16,44 @@
   </head>
   <body>
 
-    <div class="navbar navbar-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <%= link_to 'Amechan Box', root_path, class: "brand" %>
-          <div class="pull-right">
-            <%= link_to 'Logout', destroy_staff_session_path, method: :delete, class: "btn" %>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= nav_bar brand: "YATSUHASHI Box", responsive: true do %>
+
+      <%= menu_group pull: :right do %>
+        <% if current_staff %>
+          <%= menu_item "Log Out", destroy_staff_session_path, method: :delete %>
+        <% end -%>
+      <% end %>
+    <% end %>
 
     <div class="container">
-        <div class="row">
-          <div class="span9">
-            <%= bootstrap_flash %>
-            <%= yield %>
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+          <%= bootstrap_flash %>
+          <%= yield %>
+        </div>
+
+        <% if staff_signed_in? %>
+          <div id="sidebar" class="col-xs-6 col-sm-3 sidebar-offcanvas">
+            <div class="list-group">
+              <%= link_to "すべて", root_path, class: "list-group-item active" %>
+              <%= link_to "対応待ち", waiting_needs_path, class: "list-group-item" %>
+              <%= link_to "対応中"  , on_handling_needs_path, class: "list-group-item" %>
+              <%= link_to "保留中"  , on_hold_needs_path, class: "list-group-item" %>
+              <%= link_to "解決済"  , resolved_needs_path, class: "list-group-item" %>
+              <%= link_to "却下"    , rejection_needs_path, class: "list-group-item" %>
+            </div>
           </div>
-          <div class="span3">
-            <% if staff_signed_in? %>
-              <div class="well sidebar-nav">
-                <h3>いろいろ一覧</h3>
-                <ul class="nav nav-list">
-                  <li><%= link_to "対応待ち", waiting_needs_path %></li>
-                  <li><%= link_to "対応中"  , on_handling_needs_path %></li>
-                  <li><%= link_to "保留中"  , on_hold_needs_path %></li>
-                  <li><%= link_to "解決済"  , resolved_needs_path %></li>
-                  <li><%= link_to "却下"    , rejection_needs_path %></li>
-                </ul>
-              </div><!--/.well -->
-            <% end %>
-          </div><!--/span-->
-        </div><!--/row-->
+        <% end %>
+
+      </div>
+
+      <hr>
 
       <footer>
-        <br />
-        <p>&copy; ARC ACADEMY OSAKA</p>
+        <p><%= link_to 'by @satomicchy', "https://github.com/satomicchy/amechan", html_options = {target: "_blank"} %></p>
       </footer>
 
-    </div> <!-- /container -->
+    </div>
 
     <!-- Javascripts
     ================================================== -->
