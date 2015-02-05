@@ -41,6 +41,9 @@ class StaffsController < ApplicationController
   # PATCH/PUT /staffs/1
   # PATCH/PUT /staffs/1.json
   def update
+    _staff_params = staff_params
+    _staff_params.delete(:password) if staff_params[:password].blank?
+    _staff_params.delete(:password_confirmation) if staff_params[:password_confirmation].blank?
     respond_to do |format|
       if @staff.update(staff_params)
         format.html { redirect_to staffs_path, notice: 'Staff was successfully updated.' }

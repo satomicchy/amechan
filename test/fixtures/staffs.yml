@@ -3,12 +3,15 @@
 one:
   name: MyString
   email: one@example.com
+  role: general
 
 two:
   name: MyString
   email: two@example.com
+  role: general
 
 admin:
   id: 1
   name: admin
   email: admin@example.com
+  role: admin
