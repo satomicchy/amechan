@@ -1,17 +1,15 @@
-<h2><%= @title %></h2>
-
-<%= link_to '新規登録', new_need_path, class: "btn btn-small btn-info" %>
+<h3><%= @title %>&nbsp;&nbsp;<%= link_to '新規登録', new_need_path, class: "btn btn-sm btn-info" %></h3>
 
 <table class="table table-condensed">
   <thead>
     <tr>
-      <th width="28">番号</th>
+      <th width="35">No.</th>
       <th width="60">記入日</th>
-      <th width="57">スタッフ</th>
+      <th width="70">スタッフ</th>
       <th>タイトル</th>
-      <th width="42">重要度</th>
-      <th width="57">状態</th>
-      <th width="46">&nbsp;</th>
+      <th width="60">重要度</th>
+      <th width="70">状態</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
 
@@ -24,7 +22,7 @@
       <td><%= need.title %></td>
       <td><% if need.importance.present? %><%= t(need.importance) %><% end %></td>
       <td><% if need.status.present? %><%= t(need.status) %><% end %></td>
-      <td><%= link_to '詳細', need, class: "btn btn-small" %></td>
+      <td><%= link_to '詳細', need, class: "btn btn-sm btn-default" %></td>
     </tr>
     <% end %>
   </tbody>

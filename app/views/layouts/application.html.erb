@@ -17,7 +17,7 @@
   <body>
 
     <%= nav_bar brand: "YATSUHASHI Box", responsive: true do %>
-
+      <% if current_staff.id == 1%>
       <%= menu_group pull: :right do %>
         <% if current_staff %>
           <%= menu_item "Log Out", destroy_staff_session_path, method: :delete %>
@@ -35,7 +35,7 @@
         <% if staff_signed_in? %>
           <div id="sidebar" class="col-xs-6 col-sm-3 sidebar-offcanvas">
             <div class="list-group">
-              <%= link_to "すべて", root_path, class: "list-group-item active" %>
+              <%= link_to "すべて", root_path, class: "list-group-item" %>
               <%= link_to "対応待ち", waiting_needs_path, class: "list-group-item" %>
               <%= link_to "対応中"  , on_handling_needs_path, class: "list-group-item" %>
               <%= link_to "保留中"  , on_hold_needs_path, class: "list-group-item" %>

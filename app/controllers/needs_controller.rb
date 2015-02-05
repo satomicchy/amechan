@@ -43,7 +43,7 @@ class NeedsController < ApplicationController
   # GET /needs/1.json
   def show
     @comment  = Comment.new
-    @comments = @need.comments
+    @comments = @need.comments.order("id DESC")
   end
 
   # GET /needs/new

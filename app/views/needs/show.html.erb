@@ -1,9 +1,9 @@
-<h2>詳細&nbsp;&nbsp;<%= link_to '戻る', needs_path, class: "btn btn-small" %></h2>
+<h3>詳細&nbsp;&nbsp;<%= link_to '戻る', needs_path, class: "btn btn-sm btn-default" %></h3>
 
 <% if active_staff(@need.staff_id) %>
   <div>
-    <%= link_to '編集', edit_need_path(@need), class: "btn btn-small btn-warning" %>
-    <%= link_to '削除', @need, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-small btn-danger" %>
+    <%= link_to '編集', edit_need_path(@need), class: "btn btn-sm btn-warning" %>
+    <%= link_to '削除', @need, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
   </div>
 <% end %>
 
@@ -58,21 +58,6 @@
 <div>
   <blockquote>コメント</blockquote>
 
-  <% @comments.each do |comment| %>
-    <div id="comment_area_<%= comment.id %>">
-      <%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>：<%= comment.staff.name %>&nbsp;さんより
-      <% if active_staff(comment.staff_id) %>
-        <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-warning btn-mini', id: "comment_#{comment.id}" %>
-        <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-mini btn-danger" %>
-      <% end %>
-      <br />
-      <p><%= simple_format comment.memo %></p>
-    </div>
-    <hr>
-  <% end %>
-</div>
-
-<div>
   <%= form_for([@need, @comment]) do |f| %>
     <% if @comment.errors.any? %>
       <div id="error_explanation">
@@ -87,11 +72,24 @@
 
     <table>
       <tr>
-        <td><%= f.text_area :memo, class: "span7", size: "5x6" %></td>
+        <td><%= f.text_area :memo, size: "130x3" %></td>
       </tr>
       <tr>
-        <td><%= f.submit "コメントする" %>&nbsp;&nbsp;&nbsp;<%= link_to 'キャンセル', need_path(@need) %></td>
+        <td><%= f.submit "コメントする", class: 'btn btn-info btn-sm' %>&nbsp;&nbsp;or&nbsp;<%= link_to 'キャンセル', need_path(@need) %></td>
       </tr>
     </table>
+  <% end %>
+
+  <% @comments.each do |comment| %>
+    <hr>
+    <div id="comment_area_<%= comment.id %>">
+      <%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>：<%= comment.staff.name %>&nbsp;さんより
+      <% if active_staff(comment.staff_id) %>
+        <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-warning btn-xs', id: "comment_#{comment.id}" %>
+        <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-xs btn-danger" %>
+      <% end %>
+      <br />
+      <p><%= simple_format comment.memo %></p>
+    </div>
   <% end %>
 </div>

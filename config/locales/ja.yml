@@ -196,6 +196,18 @@ ja:
     errors:
       <<: *errors
 
+    attributes:
+      need:
+        id: 番号
+        title: タイトル
+        staff_id: スタッフ
+        content: 内容
+        url: URL
+        status: 状態
+        importance: 重要度
+        finish_on: 解決日
+        memo: メモ
+
   high_level:   高い
   middle_level: 普通
   low_level:    低い
