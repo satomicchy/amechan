@@ -11,27 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.text_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class="table table-condenced table-no-mergin" id="staff_table">
+    <tr>
+      <th><%= f.label :name %></th>
+      <td><%= f.text_field :name, class: "col-xs-12 col-sm-12" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :email %></th>
+      <td><%= f.text_field :email, class: "col-xs-12 col-sm-12" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :role %></th>
+      <td><%= f.select :role, Staff::ROLE.map{|s| [t(s), s]}, {}, {class: "col-xs-12 col-sm-3"} %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password %></th>
+      <td><%= f.text_field :password, class: "col-xs-12 col-sm-12" %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password_confirmation %></th>
+      <td><%= f.text_field :password_confirmation, class: "col-xs-12 col-sm-12" %></td>
+    </tr>
+    <tr>
+      <th><%= f.submit "登録する", class: 'btn btn-info btn-sm' %></th>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
 <% end %>

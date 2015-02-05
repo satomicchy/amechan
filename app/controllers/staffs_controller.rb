@@ -29,7 +29,7 @@ class StaffsController < ApplicationController
 
     respond_to do |format|
       if @staff.save
-        format.html { redirect_to @staff, notice: 'Staff was successfully created.' }
+        format.html { redirect_to staffs_path, notice: 'Staff was successfully created.' }
         format.json { render action: 'show', status: :created, location: @staff }
       else
         format.html { render action: 'new' }
@@ -43,7 +43,7 @@ class StaffsController < ApplicationController
   def update
     respond_to do |format|
       if @staff.update(staff_params)
-        format.html { redirect_to @staff, notice: 'Staff was successfully updated.' }
+        format.html { redirect_to staffs_path, notice: 'Staff was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -70,7 +70,7 @@ class StaffsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def staff_params
-      params.require(:staff).permit(:name, :email, :password, :password_confirmation)
+      params.require(:staff).permit(:name, :email, :password, :password_confirmation, :role)
     end
 
     def only_admin

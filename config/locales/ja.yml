@@ -207,6 +207,13 @@ ja:
         importance: 重要度
         finish_on: 解決日
         memo: メモ
+      staff:
+        id: 番号
+        name: スタッフ名
+        email: メールアドレス
+        role: 権限
+        password: パスワード
+        password_confirmation: パスワード（確認用）
 
   high_level:   高い
   middle_level: 普通
@@ -217,6 +224,9 @@ ja:
   on_hold:      保留中
   resolved:     解決済
   rejection:    却下
+
+  admin: admin
+  general: 一般
 
   devise:
     sessions:

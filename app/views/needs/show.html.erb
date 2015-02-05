@@ -83,7 +83,7 @@
   <% @comments.each do |comment| %>
     <hr>
     <div id="comment_area_<%= comment.id %>">
-      <%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>：<%= comment.staff.name %>&nbsp;さんより
+      <%= comment.updated_at.try(:strftime, "%Y-%m-%d") %>：<%= comment.staff.try(:name) %>&nbsp;さんより
       <% if active_staff(comment.staff_id) %>
         <%= link_to '編集', 'javascript:void(0)', class: 'comment_edit btn btn-warning btn-xs', id: "comment_#{comment.id}" %>
         <%= link_to '削除', need_comment_path(@need, comment), method: :delete, data: { confirm: 'コメントを削除しますか？' }, class: "btn btn-xs btn-danger" %>

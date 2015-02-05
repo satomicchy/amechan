@@ -1,27 +1,27 @@
-<h1>Listing staffs</h1>
+<h3>スタッフ一覧&nbsp;&nbsp;<%= link_to '新規登録', new_staff_path, class: "btn btn-sm btn-info" %></h3>
 
-<table>
+<table class="table table-condensed">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th></th>
-      <th></th>
+      <th width="35">No.</th>
+      <th>スタッフ名</th>
+      <th>メールアドレス</th>
+      <th width="90">権限</th>
+      <th width="60">&nbsp;</th>
+      <th width="60">&nbsp;</th>
     </tr>
   </thead>
 
   <tbody>
     <% @staffs.each do |staff| %>
     <tr>
+      <td><%= staff.id %></td>
       <td><%= staff.name %></td>
       <td><%= staff.email %></td>
-      <td><%= link_to 'Edit', edit_staff_path(staff) %></td>
-      <td><%= link_to 'Destroy', staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= t(staff.role) %></td>
+      <td><%= link_to '編集', edit_staff_path(staff), class: "btn btn-sm btn-warning" %></td>
+      <td><%= link_to '削除', staff, method: :delete, data: { confirm: 'スタッフを削除しますか？' }, class: "btn btn-sm btn-danger" %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Staff', new_staff_path %>

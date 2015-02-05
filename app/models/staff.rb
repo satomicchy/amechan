@@ -5,4 +5,8 @@ class Staff < ActiveRecord::Base
   devise :database_authenticatable, :rememberable, :trackable, :validatable
   has_many :needs
   has_many :comments
+
+  validates :role, :name, presence: true
+
+  ROLE = %w|admin general|
 end
