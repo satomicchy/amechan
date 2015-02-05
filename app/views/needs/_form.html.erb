@@ -24,7 +24,7 @@
       <th><%= f.label :url %></th>
       <td><%= f.text_field :url, class: "col-xs-12 col-sm-12" %></td>
     </tr>
-    <% if current_staff.id == 1 %>
+    <% if current_staff.role == "admin" %>
       <tr>
         <th><%= f.label :status %></th>
         <td><%= f.select :status, Need::STATE.map{|s| [t(s), s]}, {}, {class: "col-xs-12 col-sm-3"} %></td>
@@ -34,7 +34,7 @@
       <th><%= f.label :importance %></th>
       <td><%= f.select :importance, Need::IMPORTANCE.map{|i| [t(i), i]}, {}, {class: "col-xs-12 col-sm-3"} %></td>
     </tr>
-    <% if current_staff.id == 1 %>
+    <% if current_staff.role == "admin" %>
       <tr>
         <th><%= f.label :finish_on %></th>
         <td><%= f.text_field :finish_on, class: "pick_date col-xs-12 col-sm-3" %></td>

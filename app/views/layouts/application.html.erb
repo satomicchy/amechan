@@ -17,9 +17,9 @@
   <body>
 
     <%= nav_bar brand: "YATSUHASHI Box", responsive: true do %>
-      <% if current_staff.id == 1%>
       <%= menu_group pull: :right do %>
         <% if current_staff %>
+          <% if current_staff.role == "admin"%><%= menu_item "スタッフ", staffs_path %><% end %>
           <%= menu_item "Log Out", destroy_staff_session_path, method: :delete %>
         <% end -%>
       <% end %>
