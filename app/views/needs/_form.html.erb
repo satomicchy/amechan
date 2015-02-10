@@ -17,6 +17,10 @@
       <td><%= f.text_field :title, class: "col-xs-12 col-sm-12" %></td>
     </tr>
     <tr>
+      <th><%= f.label :area %></th>
+      <td><%= f.text_field :area, class: "col-xs-12 col-sm-12" %></td>
+    </tr>
+    <tr>
       <th><%= f.label :content %></th>
       <td><%= f.text_area :content, class: "col-xs-12 col-sm-12", size: "100x3" %></td>
     </tr>
@@ -33,6 +37,10 @@
     <tr>
       <th><%= f.label :importance %></th>
       <td><%= f.select :importance, Need::IMPORTANCE.map{|i| [t(i), i]}, {}, {class: "col-xs-12 col-sm-3"} %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :schedule_on %></th>
+      <td><%= f.text_field :schedule_on, class: "pick_date col-xs-12 col-sm-3" %></td>
     </tr>
     <% if current_staff.role == "admin" %>
       <tr>

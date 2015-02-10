@@ -26,6 +26,10 @@
       <td><%= @need.title %></td>
     </tr>
     <tr>
+      <th>場所</th>
+      <td><%= @need.area %></td>
+    </tr>
+    <tr>
       <th>内容</th>
       <td><%= simple_format @need.content %></td>
     </tr>
@@ -40,6 +44,10 @@
     <tr>
       <th>状態</th>
       <td><% if @need.status.present? %><%= t(@need.status) %><% end %></td>
+    </tr>
+    <tr>
+      <th>予定</th>
+      <td><%= @need.schedule_on.try(:strftime, "%Y-%m-%d") %></td>
     </tr>
   </table>
 </div>
