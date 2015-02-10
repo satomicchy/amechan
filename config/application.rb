@@ -20,5 +20,7 @@ module AmechanBox
     config.i18n.default_locale = :ja
     I18n.enforce_available_locales = false
     config.action_mailer.default_url_options = { host: ENV["AMECHAN_DOMAIN"] }
+
+    config.serve_static_assets = true
   end
 end
