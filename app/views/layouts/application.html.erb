@@ -36,9 +36,9 @@
           <div id="sidebar" class="col-xs-4 col-sm-2 sidebar-offcanvas">
             <div class="list-group">
               <%= link_to "すべて", root_path, class: "list-group-item" %>
+              <%= link_to "確認中"  , on_hold_needs_path, class: "list-group-item" %>
               <%= link_to "対応待ち", waiting_needs_path, class: "list-group-item" %>
               <%= link_to "対応中"  , on_handling_needs_path, class: "list-group-item" %>
-              <%= link_to "保留中"  , on_hold_needs_path, class: "list-group-item" %>
               <%= link_to "解決済"  , resolved_needs_path, class: "list-group-item" %>
               <%= link_to "却下"    , rejection_needs_path, class: "list-group-item" %>
             </div>

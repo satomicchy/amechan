@@ -223,7 +223,7 @@ ja:
 
   waiting:      対応待ち
   on_handling:  対応中
-  on_hold:      保留中
+  on_hold:      確認中
   resolved:     解決済
   rejection:    却下
 

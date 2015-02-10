@@ -16,7 +16,7 @@ class NeedsController < ApplicationController
   end
 
   def on_holds
-    @title = "要望一覧（保留中）"
+    @title = "要望一覧（確認中）"
     @needs = Need.where(status: "on_hold").order(@order_keys[params[:sort]]).order("id DESC")
     render "index"
   end
