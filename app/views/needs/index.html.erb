@@ -9,11 +9,11 @@
   <thead>
     <tr>
       <th width="35">No.</th>
-      <th width="60">記入日</th>
+      <th width="120">記入日</th>
       <th width="70">from</th>
       <th>タイトル</th>
       <th width="70">状態</th>
-      <th width="80">
+      <th width="120">
         予定&nbsp;
         <%= link_to '▲', url_for(params.merge(sort: "schedule_asc")) %>
         <%= link_to '▼', url_for(params.merge(sort: "schedule_desc")) %>
