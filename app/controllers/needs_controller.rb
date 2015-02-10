@@ -1,34 +1,35 @@
 # -*- coding: utf-8 -*-
 class NeedsController < ApplicationController
   before_action :set_need, only: [:show, :edit, :update, :destroy]
+  before_action :set_order_keys
 
   def waitings
     @title = "要望一覧（対応待ち）"
-    @needs = Need.where(status: "waiting").order("id DESC")
+    @needs = Need.where(status: "waiting").order(@order_keys[params[:sort]]).order("id DESC")
     render "index"
   end
 
   def on_handlings
     @title = "要望一覧（対応中）"
-    @needs = Need.where(status: "on_handling").order("id DESC")
+    @needs = Need.where(status: "on_handling").order(@order_keys[params[:sort]]).order("id DESC")
     render "index"
   end
 
   def on_holds
     @title = "要望一覧（保留中）"
-    @needs = Need.where(status: "on_hold").order("id DESC")
+    @needs = Need.where(status: "on_hold").order(@order_keys[params[:sort]]).order("id DESC")
     render "index"
   end
 
   def resolveds
     @title = "要望一覧（解決済）"
-    @needs = Need.where(status: "resolved").order("id DESC")
+    @needs = Need.where(status: "resolved").order(@order_keys[params[:sort]]).order("id DESC")
     render "index"
   end
 
   def rejections
     @title = "要望一覧（却下）"
-    @needs = Need.where(status: "rejection").order("id DESC")
+    @needs = Need.where(status: "rejection").order(@order_keys[params[:sort]]).order("id DESC")
     render "index"
   end
 
@@ -36,7 +37,7 @@ class NeedsController < ApplicationController
   # GET /needs.json
   def index
     @title = "要望一覧"
-    @needs = Need.order("id DESC")
+    @needs = Need.order(@order_keys[params[:sort]]).order("id DESC")
   end
 
   # GET /needs/1
@@ -98,6 +99,13 @@ class NeedsController < ApplicationController
   end
 
   private
+    def set_order_keys
+      @order_keys = {
+        'schedule_asc'  => 'schedule_on ASC',
+        'schedule_desc' => 'schedule_on DESC',
+      }
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_need
       @need = Need.find(params[:id])

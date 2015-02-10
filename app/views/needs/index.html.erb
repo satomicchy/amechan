@@ -5,10 +5,14 @@
     <tr>
       <th width="35">No.</th>
       <th width="60">記入日</th>
-      <th width="70">スタッフ</th>
+      <th width="70">from</th>
       <th>タイトル</th>
-      <th width="60">重要度</th>
       <th width="70">状態</th>
+      <th width="80">
+        予定&nbsp;
+        <%= link_to '▲', url_for(params.merge(sort: "schedule_asc")) %>
+        <%= link_to '▼', url_for(params.merge(sort: "schedule_desc")) %>
+      </th>
       <th>&nbsp;</th>
     </tr>
   </thead>
@@ -20,8 +24,8 @@
       <td><%= need.created_at.strftime("%Y-%m-%d") %></td>
       <td><%= need.staff.try("name") %></td>
       <td><%= need.title %></td>
-      <td><% if need.importance.present? %><%= t(need.importance) %><% end %></td>
       <td><% if need.status.present? %><%= t(need.status) %><% end %></td>
+      <td><%= need.schedule_on.try(:strftime, "%Y-%m-%d") %></td>
       <td><%= link_to '詳細', need, class: "btn btn-sm btn-default" %></td>
     </tr>
     <% end %>
