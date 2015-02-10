@@ -14,7 +14,7 @@
   <table class="table table-condenced table-no-mergin" id="need_table">
     <tr>
       <th>from</th>
-      <td><%= f.select :staff_id, Staff.all.pluck(:name, :id), class: "col-xs-12 col-sm-12" %></td>
+      <td><%= f.select :staff_id, Staff.all.pluck(:name, :id), {include_blank: ""}, class: "col-xs-12 col-sm-3" %></td>
     </tr>
     <tr>
       <th><%= f.label :title %></th>
