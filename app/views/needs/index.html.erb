@@ -1,4 +1,9 @@
-<h3><%= @title %>&nbsp;&nbsp;<%= link_to '新規登録', new_need_path, class: "btn btn-sm btn-info" %></h3>
+<h3>
+  <%= @title %>&nbsp;&nbsp;
+  <% if current_staff.role == "admin" %>
+    <%= link_to '新規登録', new_need_path, class: "btn btn-sm btn-info" %>
+  <% end %>
+</h3>
 
 <table class="table table-condensed">
   <thead>

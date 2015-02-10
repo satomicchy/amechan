@@ -1,6 +1,6 @@
 <h3>詳細&nbsp;&nbsp;<%= link_to '戻る', needs_path, class: "btn btn-sm btn-default" %></h3>
 
-<% if active_staff(@need.staff_id) %>
+<% if current_staff.role == "admin" %>
   <div>
     <%= link_to '編集', edit_need_path(@need), class: "btn btn-sm btn-warning" %>
     <%= link_to '削除', @need, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-danger" %>
@@ -18,7 +18,7 @@
       <td><%= @need.created_at.strftime("%Y-%m-%d") %></td>
     </tr>
     <tr>
-      <th>スタッフ</th>
+      <th>from</th>
       <td><%= @need.staff.try("name") %></td>
     </tr>
     <tr>

@@ -13,6 +13,10 @@
 
   <table class="table table-condenced table-no-mergin" id="need_table">
     <tr>
+      <th>from</th>
+      <td><%= f.select :staff_id, Staff.all.pluck(:name, :id), class: "col-xs-12 col-sm-12" %></td>
+    </tr>
+    <tr>
       <th><%= f.label :title %></th>
       <td><%= f.text_field :title, class: "col-xs-12 col-sm-12" %></td>
     </tr>
@@ -22,7 +26,7 @@
     </tr>
     <tr>
       <th><%= f.label :content %></th>
-      <td><%= f.text_area :content, class: "col-xs-12 col-sm-12", size: "100x3" %></td>
+      <td><%= f.text_area :content, class: "col-xs-12 col-sm-12", size: "100x5" %></td>
     </tr>
     <tr>
       <th><%= f.label :url %></th>
