@@ -207,6 +207,8 @@ ja:
         importance: 重要度
         finish_on: 解決日
         memo: メモ
+        area: 場所
+        schedule_on: 予定
       staff:
         id: 番号
         name: スタッフ名

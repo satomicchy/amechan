@@ -105,6 +105,6 @@ class NeedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def need_params
-      params.require(:need).permit(:staff_id, :title, :content, :url, :status, :importance, :finish_on, :memo)
+      params.require(:need).permit(:staff_id, :title, :content, :url, :status, :importance, :finish_on, :memo, :area, :schedule_on)
     end
 end
